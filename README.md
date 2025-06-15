@@ -1,2 +1,3 @@
 # Protegendo_a_Plantacao
-Desenvolvimento sobre, Protegendo a Plantação para o concurso Agrinho 2025.
+Desenvolvimento sobre, Protegendo a Plantação para o concurso Agrinho 2025. Fuoi utilzado javascript do p5.js, onde cada "categoria" de códigos há de realizar uma função. Por exemplo no inicio onde há a criação das variavéis e as constantes. A parte onde cria as plantas, os bichos, a parte onde "aprimora" os bichos, onde desenha o cenário, na maioria utilizando a funcção draw() dentro de setup().
+O objetivo do jogo consiste em incentivar o cuidado que você precisa ter com as plantas. Clicando no bichos os atigindo com um feixe de lanterna (tecnologia) para afastá-los e salvar sua plantação.
