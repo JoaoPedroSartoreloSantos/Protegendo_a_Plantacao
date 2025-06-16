@@ -1,3 +1,4 @@
+//
 let plantas = [];
 let vidaPlantas = [];
 let bichos = [];
