@@ -1,4 +1,5 @@
-//
+///define variáveis
+
 let plantas = [];
 let vidaPlantas = [];
 let bichos = [];
@@ -14,15 +15,14 @@ let inimigosMinigame = [];
 let lanternCooldown = 0;
 let tempoNoiteFrames = 0;
 let vidaRecuperadaHoje = [];
-const TEMPO_NOITE = 15 * 60; // 20 segundos em frames (60fps)
+const TEMPO_NOITE = 15 * 60;
 const LANTERN_COOLDOWN_FRAMES = 15; 
-
-//feixe de luz
 let feixes = [];
-
 let tempoJogoSegundos = 0;
 let jogoFinalizado = false;
 let melhorTempo = null;
+
+///cria o espaço junto dos pré-botões
 
 function setup() {
   createCanvas(800, 600);
@@ -50,6 +50,7 @@ function setup() {
   jogoAtivo = true;
 }
 
+//desenha tela final, cenário de fundo, contagem de dias, plantas e feixe de luz
 function draw() {
   if(jogoFinalizado){
     mostrarTelaFinal();
@@ -74,7 +75,6 @@ function draw() {
     return;
   }
   
-  //contagem de dias
   fill(255);
   textSize(24);
   text("Dia " + diaAtual, width/2, 20);
@@ -116,6 +116,8 @@ function draw() {
   }
 }
 
+///faz a tela final aparecer
+
 function mostrarTelaFinal(){
   background(100);
   fill(255);
@@ -133,6 +135,8 @@ function mostrarTelaFinal(){
   botaoAvancar.hide();
 }
 
+///desenha a barra de progressão de tempo a noite
+
 function drawBarraProgressoNoite() {
   const barraX = 200, barraY = 40, barraWidth = 400, barraHeight = 20;
   let progresso = constrain(tempoNoiteFrames / TEMPO_NOITE, 0, 1);
@@ -149,6 +153,8 @@ function drawBarraProgressoNoite() {
   text("Tempo restante da noite", barraX + barraWidth/2, barraY + barraHeight / 2);
 }
 
+///faz com que ao cennário ser gerado venha com dealhes, como: sol e lua
+
 function drawCeu() {
   if (!dia) {
     fill(255, 255, 200);
@@ -157,13 +163,14 @@ function drawCeu() {
     fill('yellow');
     ellipse(700, 100, 80);
   }
-  // Retângulo marrom com borda preta
   fill('saddlebrown');
   stroke(0);
   strokeWeight(2);
   rect(0, 570, width, 30);
   noStroke();
 }
+
+///desenha as plantas definitivas
 
 function drawPlantas() {
   textAlign(CENTER, CENTER);
@@ -188,19 +195,21 @@ function drawPlantas() {
     fill(p.infectada ? 'purple' : 'green');
     rect(p.x, p.y, 50, 50, 10);
     
-    // Emoji fixo e centralizado
+    
     noStroke();
     textSize(32);
     fill(255);
     text('🌱', p.x + 25, p.y + 25);
     
-    // Vida da planta - tamanho fixo
+   
     textSize(16);
     fill(255);
     text(int(vidaPlantas[i]), p.x + 25, p.y - 15);
   }
   noStroke();
 }
+
+///faz os animais aparecerem
 
 function spawnBichos() {
   bichos = [];
@@ -229,6 +238,8 @@ function spawnBichos() {
     count++;
   }
 }
+
+///aprimora eles e adiciona novos comandos
 
 function updateBichos() {
   for (let i = bichos.length - 1; i >= 0; i--) {
@@ -263,6 +274,8 @@ function updateBichos() {
     jogoAtivo = false;
   }
 }
+
+///faz funcionar o feixe da lanterna no click (só de noite)
 
 function mousePressed() {
   if (minigameAtivo) return;
@@ -325,6 +338,8 @@ function desenharFeixes() {
   }
 }
 
+///faz o botão de avançar funcionar corretamente
+
 function avancarTempo() {
   if (minigameAtivo) return;
   if (jogoFinalizado) return;
@@ -369,6 +384,8 @@ function avancarTempo() {
   }
 }
 
+///inicia minigame de desvio da infecção
+
 function iniciarMinigame(indice) {
   minigameAtivo = true;
   plantaInfectada = indice;
@@ -383,6 +400,8 @@ function iniciarMinigame(indice) {
     });
   }
 }
+
+///desenha o minigame(cenáio) e os 2 personagens, além de fazer o fazendeiro se mexer
 
 function desenharMinigame() {
   background(20);
@@ -414,6 +433,8 @@ function desenharMinigame() {
     minigameAtivo = false;
   }
 }
+
+///faz o botão de recomeçar funcionar
 
 function reiniciarJogo() {
   plantas = [];
