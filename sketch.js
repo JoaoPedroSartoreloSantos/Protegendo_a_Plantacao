@@ -50,7 +50,7 @@ function setup() {
   jogoAtivo = true;
 }
 
-//desenha tela final, cenário de fundo, contagem de dias, plantas e feixe de luz
+///desenha tela final, cenário de fundo, contagem de dias, plantas, feixe de luz e botão de avançar
 function draw() {
   if(jogoFinalizado){
     mostrarTelaFinal();
@@ -80,7 +80,7 @@ function draw() {
   text("Dia " + diaAtual, width/2, 20);
 
   if (dia) {
-    //botão de avançar
+    
     if (diaAtual < 2) {
       let todasPlantadas = plantas.every(p => p.plantada);
       if (todasPlantadas) botaoAvancar.show();
@@ -109,9 +109,9 @@ function draw() {
 
   desenharFeixes();
 
-  //atualiza contador de tempo do jogo só se estiver ativo e não no minigame
+  
   if(jogoAtivo && !minigameAtivo && !dia){
-    //contando tempo em segundos com frameRate 60
+    
     tempoJogoSegundos += deltaTime / 1000;
   }
 }
@@ -371,11 +371,11 @@ function avancarTempo() {
     botaoAvancar.hide();
 
     if(diaAtual > 8){
-      // Finaliza o jogo e mostra tela
+      
       jogoFinalizado = true;
       botaoAvancar.hide();
       botaoReiniciar.show();
-      // salva melhor tempo
+     
       if(!melhorTempo || tempoJogoSegundos < melhorTempo){
         melhorTempo = tempoJogoSegundos;
         localStorage.setItem('melhorTempoPlantas', melhorTempo);
