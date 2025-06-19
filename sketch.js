@@ -150,7 +150,7 @@ function drawBarraProgressoNoite() {
   fill(255);
   textSize(16);
   textAlign(CENTER, CENTER);
-  text("Tempo restante da noite", barraX + barraWidth/2, barraY + barraHeight / 2);
+  text("Tempo restante - Clique nos animais para espantar-los", barraX + barraWidth/2, barraY + barraHeight / 2);
 }
 
 ///faz com que ao cennário ser gerado venha com dealhes, como: sol e lua
